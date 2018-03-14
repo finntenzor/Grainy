@@ -63,14 +63,14 @@ public abstract class Entity implements IEntity {
 			try {
 				return this.checkCollide(o);
 			} catch (UncheckableException e1) {
-				try {				
+				try {
 					return o.checkCollide(this);
 				} catch (UncheckableException e2) {
 					throw new UncheckableException(this, obj);
 				}
 			}
 		} else {
-			throw new UncheckableException(this, obj);
+			return obj.isCollide(this);
 		}
 	}
 
@@ -85,10 +85,7 @@ public abstract class Entity implements IEntity {
 	protected abstract boolean checkCollide(IEntity obj) throws UncheckableException;
 
 	/**
-	 * Call this method to throw a UncheckableException in checkCollide to tell
-	 * Grainy to check the other way.
+	 * Throw this exception in checkCollide may economy
 	 */
-	protected void throwUncheckableException() {
-		throw UncheckableException.EMPTY_INSTANCE;
-	}
+	protected final static UncheckableException Uncheckable = UncheckableException.EMPTY_INSTANCE;
 }
