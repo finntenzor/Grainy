@@ -1,15 +1,15 @@
 package indi.finntenzor.grainy.entity;
 
+import indi.finntenzor.grainy.intf.IEntity;
+
 /**
  * A Entity is a object in the game. It can be draw, be move and be delete.
  * Also, it has its origin point and it can check collision between them.
  * 
  * @author FinnTenzor
  *
- * @param <T> On Android platforms, T should be Canvas. On PC platforms, T
- *            should be Graphics.
  */
-public abstract class Entity<T> {
+public abstract class Entity implements IEntity {
 	private boolean delete;
 
 	/**
@@ -17,7 +17,7 @@ public abstract class Entity<T> {
 	 * 
 	 * @param canvas Canvas on Android or Graphics on PC.
 	 */
-	public abstract void onDraw(T canvas);
+	public abstract void onDraw(Object canvas);
 
 	/**
 	 * This method will be automatically called when this entity should be move form
@@ -56,16 +56,21 @@ public abstract class Entity<T> {
 	 * @return True if collision occurred.
 	 * @throws UncheckableException Two entity can't check collision.
 	 */
-	@SuppressWarnings("rawtypes")
-	public final boolean isCollide(Entity obj) throws UncheckableException {
-		try {
-			return this.checkCollide(obj);
-		} catch (UncheckableException e1) {
-			try {				
-				return obj.checkCollide(this);
-			} catch (UncheckableException e2) {
-				throw new UncheckableException(this, obj);
+	@Override
+	public final boolean isCollide(IEntity obj) throws UncheckableException {
+		if (obj instanceof Entity) {
+			Entity o = (Entity) obj;
+			try {
+				return this.checkCollide(o);
+			} catch (UncheckableException e1) {
+				try {				
+					return o.checkCollide(this);
+				} catch (UncheckableException e2) {
+					throw new UncheckableException(this, obj);
+				}
 			}
+		} else {
+			throw new UncheckableException(this, obj);
 		}
 	}
 
@@ -77,8 +82,7 @@ public abstract class Entity<T> {
 	 * @return True if collision occurred.
 	 * @throws UncheckableException Throws when can't check by one-way.
 	 */
-	@SuppressWarnings("rawtypes")
-	protected abstract boolean checkCollide(Entity obj) throws UncheckableException;
+	protected abstract boolean checkCollide(IEntity obj) throws UncheckableException;
 
 	/**
 	 * Call this method to throw a UncheckableException in checkCollide to tell

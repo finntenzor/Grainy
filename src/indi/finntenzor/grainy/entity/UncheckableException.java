@@ -1,5 +1,7 @@
 package indi.finntenzor.grainy.entity;
 
+import indi.finntenzor.grainy.intf.IEntity;
+
 /**
  * Exception that implies the collision check is unreasonable or may be
  * reasonable.
@@ -19,8 +21,7 @@ public class UncheckableException extends IllegalArgumentException {
 	 * @param a Entity a.
 	 * @param b Entity b.
 	 */
-	@SuppressWarnings("rawtypes")
-	public UncheckableException(Entity a, Entity b) {
+	public UncheckableException(IEntity a, IEntity b) {
 		super(a.getClass().getName() + "&" + b.getClass().getName());
 	}
 
