@@ -60,8 +60,12 @@ public abstract class Entity<T> {
 	public final boolean isCollide(Entity obj) throws UncheckableException {
 		try {
 			return this.checkCollide(obj);
-		} catch (UncheckableException e) {
-			return obj.checkCollide(this);
+		} catch (UncheckableException e1) {
+			try {				
+				return obj.checkCollide(this);
+			} catch (UncheckableException e2) {
+				throw new UncheckableException(this, obj);
+			}
 		}
 	}
 
