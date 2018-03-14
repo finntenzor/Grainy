@@ -3,6 +3,13 @@ package indi.finntenzor.grainy.intf;
 import indi.finntenzor.grainy.entity.Point;
 import indi.finntenzor.grainy.entity.UncheckableException;
 
+/**
+ * Entity interface. A Entity is a object in the game. It can be draw, be move and be delete.
+ * Also, it has its origin point and it can check collision between them.
+ * 
+ * @author FinnTenzor
+ *
+ */
 public interface IEntity {
 	/**
 	 * This method will be automatically called when this entity should be draw.

@@ -20,6 +20,6 @@ public class Point {
 
 	@Override
 	public String toString() {
-		return String.format(Locale.getDefault(), "{Point x:%f y:%f}", x, y);
+		return String.format(Locale.getDefault(), "{Point(%f,%f)}", x, y);
 	}
 }
