@@ -9,17 +9,17 @@ import java.util.Locale;
  *
  */
 public class Point {
-	/**
-	 * The x position of this point.
-	 */
-	public float x;
-	/**
-	 * The y position of this point.
-	 */
-	public float y;
+    /**
+     * The x position of this point.
+     */
+    public float x;
+    /**
+     * The y position of this point.
+     */
+    public float y;
 
-	@Override
-	public String toString() {
-		return String.format(Locale.getDefault(), "{Point(%f,%f)}", x, y);
-	}
+    @Override
+    public String toString() {
+        return String.format(Locale.getDefault(), "{Point(%f,%f)}", x, y);
+    }
 }

@@ -9,23 +9,23 @@ package indi.finntenzor.grainy.intf;
  *
  */
 public interface IWorker {
-	/**
-	 * Resume this worker.
-	 */
-	void resume();
+    /**
+     * Resume this worker.
+     */
+    void resume();
 
-	/**
-	 * Pause this worker.
-	 */
-	void pause();
+    /**
+     * Pause this worker.
+     */
+    void pause();
 
-	/**
-	 * @return Return true if this worker is running.
-	 */
-	boolean isRunning();
+    /**
+     * @return Return true if this worker is running.
+     */
+    boolean isRunning();
 
-	/**
-	 * This method describe how this worker work once.
-	 */
-	void work();
+    /**
+     * This method describe how this worker work once.
+     */
+    void work();
 }

@@ -10,26 +10,26 @@ import indi.finntenzor.grainy.intf.IEntity;
  *
  */
 public class UncheckableException extends IllegalArgumentException {
-	private final static long serialVersionUID = 8411009257655587631L;
+    private final static long serialVersionUID = 8411009257655587631L;
 
-	// Use for entity collide check.
-	/* package */ final static UncheckableException EMPTY_INSTANCE;
+    // Use for entity collide check.
+    /* package */ final static UncheckableException EMPTY_INSTANCE;
 
-	/**
-	 * Construct a UncheckableException form two Entity.
-	 * 
-	 * @param a Entity a.
-	 * @param b Entity b.
-	 */
-	public UncheckableException(IEntity a, IEntity b) {
-		super(a.getClass().getName() + "&" + b.getClass().getName());
-	}
+    /**
+     * Construct a UncheckableException form two Entity.
+     * 
+     * @param a Entity a.
+     * @param b Entity b.
+     */
+    public UncheckableException(IEntity a, IEntity b) {
+        super(a.getClass().getName() + "&" + b.getClass().getName());
+    }
 
-	private UncheckableException() {
+    private UncheckableException() {
 
-	}
+    }
 
-	static {
-		EMPTY_INSTANCE = new UncheckableException();
-	}
+    static {
+        EMPTY_INSTANCE = new UncheckableException();
+    }
 }

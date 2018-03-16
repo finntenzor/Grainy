@@ -7,8 +7,8 @@ package indi.finntenzor.grainy.intf;
  *
  */
 public interface IClock {
-	/**
-	 * @return The time inner the game.
-	 */
-	long clock();
+    /**
+     * @return The time inner the game.
+     */
+    long clock();
 }
